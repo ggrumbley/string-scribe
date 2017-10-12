@@ -1,0 +1,35 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "license": "MIT",
+  "scripts": {
+    "client": "npm start --prefix client",
+    "dev": "nodemon ./server/app.js --exec \"npm run lint && node\"",
+    "lint": "eslint server/**/*.js",
+    "lint:fix": "eslint server/**/*.js --fix",
+    "seed": "node seed",
+    "start:dev": "concurrently --kill-others \"npm run dev\" \"npm run client\""
+  },
+  "dependencies": {
+    "bcrypt-nodejs": "^0.0.3",
+    "bluebird": "^3.5.1",
+    "body-parser": "^1.18.2",
+    "cors": "^2.8.4",
+    "express": "^4.16.2",
+    "joi": "^11.3.4",
+    "jsonwebtoken": "^8.1.0",
+    "morgan": "^1.9.0",
+    "passport": "^0.4.0",
+    "passport-jwt": "^3.0.0",
+    "sequelize": "^4.13.8",
+    "sqlite3": "^3.1.13"
+  },
+  "devDependencies": {
+    "concurrently": "^3.5.0",
+    "eslint": "^4.8.0",
+    "eslint-config-airbnb": "^16.0.0",
+    "eslint-config-airbnb-base": "^12.0.2",
+    "eslint-plugin-import": "^2.7.0",
+    "nodemon": "^1.12.1"
+  }
+}
