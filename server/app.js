@@ -9,9 +9,9 @@ app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(cors());
 
-app.get('/', (req, res) => {
+app.post('/register', (req, res) => {
   res.send({
-    message: 'Hello there!',
+    message: 'Registered!!!!!',
   });
 });
 
