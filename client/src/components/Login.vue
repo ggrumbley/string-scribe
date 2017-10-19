@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import AuthenticationService from '@/services/AuthService';
+import AuthService from '@/services/AuthService';
 
 export default {
   data() {
@@ -40,17 +40,16 @@ export default {
   methods: {
     async login() {
       try {
-        const response = await AuthenticationService.login({
+        const response = await AuthService.login({
           email: this.email,
           password: this.password,
         });
+
         this.$store.dispatch('setToken', response.data.token);
         this.$store.dispatch('setUser', response.data.user);
-        this.$router.push({
-          name: 'songs',
-        });
+        this.$router.push({ name: 'home' });
       } catch (error) {
-        this.error = error.response.data.error;
+        // this.error = error.response.data.error;
       }
     },
   },

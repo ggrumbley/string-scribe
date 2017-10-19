@@ -4,6 +4,7 @@ import Vue from 'vue';
 import Vuetify from 'vuetify';
 import 'vuetify/dist/vuetify.min.css';
 import { sync } from 'vuex-router-sync';
+import Panel from '@/components/globals/Panel';
 
 import store from './store/store';
 import App from './App';
@@ -13,12 +14,15 @@ Vue.config.productionTip = false;
 
 Vue.use(Vuetify);
 
+Vue.component('panel', Panel);
+
 sync(store, router);
 
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
+  store,
   template: '<App/>',
   components: { App },
 });
