@@ -41,7 +41,6 @@ exports.login = async (req, res) => {
     }
 
     const userJson = user.toJSON();
-
     res.send({
       user: userJson,
       token: jwtSignUser(userJson)
