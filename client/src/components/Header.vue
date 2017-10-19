@@ -4,13 +4,18 @@
       <router-link
         class="home"
         tag="span"
-        :to="{ name: 'home'}">
+        :to="{ name: 'songs'}">
         StringScribe
       </router-link>
     </v-toolbar-title>
 
     <v-toolbar-items>
-      <v-btn flat dark>
+      <v-btn
+        flat
+        dark
+        :to="{
+          name: 'songs'
+        }">
         Browse
       </v-btn>
     </v-toolbar-items>
@@ -55,7 +60,7 @@ export default {
     logout() {
       this.$store.dispatch('setToken', null);
       this.$store.dispatch('setUser', null);
-      this.$router.push({ name: 'home' });
+      this.$router.push({ name: 'songs' });
     },
   },
 };
