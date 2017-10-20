@@ -16,9 +16,9 @@
     </v-btn>
 
     <div
-      v-for="song in songs"
+      v-for="(song, index) in songs"
       class="song"
-      :key="song.id">
+      v-bind:key="song.id">
 
       <v-layout>
         <v-flex xs6>
@@ -43,6 +43,14 @@
             }">
             View
           </v-btn>
+          <v-btn
+            dark
+            class="red"
+            v-if="$store.state.isUserLoggedIn"
+            @click="deleteSong(song, index)"
+            >
+            Delete
+          </v-btn>
         </v-flex>
 
         <v-flex xs6>
@@ -61,6 +69,16 @@ export default {
     return {
       songs: null,
     };
+  },
+  methods: {
+    async deleteSong(song, index) {
+      try {
+        await SongsService.delete(song);
+        this.songs.splice(index, 1);
+      } catch (err) {
+        console.log(err); // eslint-disable-line
+      }
+    },
   },
   watch: {
     '$route.query.search': {

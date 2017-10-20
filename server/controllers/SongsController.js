@@ -56,3 +56,15 @@ exports.put = async (req, res) => {
   }
 };
 
+exports.remove = async (req, res) => {
+  try {
+    const song = await Song.findById(req.params.songId);
+    if (!song) {
+      return res.status(403).send({ error: 'You don\'t have access to this song' });
+    }
+    await song.destroy();
+    res.send(song);
+  } catch (err) {
+    res.status(500).send({ error: 'an error has occured trying to show the songs' });
+  }
+};

@@ -11,7 +11,9 @@ app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(cors());
 
-require('./routes')(app)
+require('./passport');
+
+require('./routes')(app);
 
 sequelize.sync().then(() => {
   app.listen(config.port);
